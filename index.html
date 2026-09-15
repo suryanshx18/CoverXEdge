@@ -1,620 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CoverXEdge - Live Stream</title><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-SMZXC121E6"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-<title>CoverXEdge - Live Stream</title>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SMZXC121E6"></script>
-
-<script>
-window.dataLayer = window.dataLayer || [];
-
-function gtag(){
-  dataLayer.push(arguments);
+  gtag('config', 'G-SMZXC121E6');
+</script><style>
+html,body{
+margin:0;
+padding:0;
+background:#000;
+overflow:hidden;
+width:100%;
+height:100%;
 }
-
-gtag('js', new Date());
-gtag('config', 'G-SMZXC121E6');
-</script>
-
-<style>
-
-/* =========================
-   PAGE
-========================= */
-
-html,
-body{
-  margin:0;
-  padding:0;
-  background:#000;
-  overflow:hidden;
-  width:100%;
-  height:100%;
-}
-
-/* =========================
-   MAIN PLAYER
-========================= */
 
 #main-iframe{
-  width:100%;
-  height:100%;
-  border:none;
-  display:block;
-  position:absolute;
-  top:0;
-  left:0;
+width:100%;
+height:100%;
+border:none;
+display:block;
+position:absolute;
+top:0;
+left:0;
 }
 
-/* =========================
-   TELEGRAM TOP BUTTON
-========================= */
-
 .telegram-btn{
-  position:absolute;
-  top:15px;
-  left:15px;
-  z-index:9999;
-
-  display:flex;
-  align-items:center;
-  gap:12px;
-
-  background:linear-gradient(135deg,#1e88e5,#1565c0);
-
-  padding:10px 16px;
-
-  border-radius:14px;
-
-  text-decoration:none;
-  color:#fff;
-
-  font-size:16px;
-  font-weight:600;
-  font-family:Arial,sans-serif;
-
-  box-shadow:0 6px 18px rgba(0,0,0,0.5);
+position:absolute;
+top:15px;
+left:15px;
+z-index:9999;
+display:flex;
+align-items:center;
+gap:12px;
+background:linear-gradient(135deg,#1e88e5,#1565c0);
+padding:10px 16px;
+border-radius:14px;
+text-decoration:none;
+color:#fff;
+font-size:16px;
+font-weight:600;
+font-family:Arial,sans-serif;
+box-shadow:0 6px 18px rgba(0,0,0,0.5);
 }
 
 .telegram-icon{
-  width:34px;
-  height:34px;
-
-  background:rgba(255,255,255,0.15);
-
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border:2px solid #fff;
+width:34px;
+height:34px;
+background:rgba(255,255,255,0.15);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+border:2px solid #fff;
 }
 
 .telegram-icon svg{
-  width:18px;
-  height:18px;
-  fill:#fff;
+width:18px;
+height:18px;
+fill:#fff;
 }
-
-/* =========================
-   TELEGRAM MODAL
-========================= */
-
-.telegram-modal{
-  position:fixed;
-  inset:0;
-
-  z-index:999999;
-
-  display:none;
-
-  align-items:center;
-  justify-content:center;
-
-  background:rgba(0,0,0,0.80);
-
-  padding:20px;
-  box-sizing:border-box;
-}
-
-.telegram-modal.show{
-  display:flex;
-}
-
-.telegram-modal-box{
-  width:min(420px,100%);
-
-  background:#111;
-
-  border:1px solid rgba(255,255,255,0.12);
-
-  border-radius:22px;
-
-  padding:28px 22px;
-
-  box-sizing:border-box;
-
-  text-align:center;
-
-  box-shadow:0 20px 60px rgba(0,0,0,0.8);
-}
-
-.telegram-modal-title{
-  margin:0 0 12px;
-
-  color:#fff;
-
-  font-family:Arial,sans-serif;
-
-  font-size:24px;
-  font-weight:700;
-}
-
-.telegram-modal-desc{
-  margin:0 0 24px;
-
-  color:#ccc;
-
-  font-family:Arial,sans-serif;
-
-  font-size:15px;
-
-  line-height:1.5;
-}
-
-/* =========================
-   MODAL BUTTONS
-========================= */
-
-.telegram-modal-actions{
-  width:100%;
-
-  display:flex;
-
-  gap:10px;
-}
-
-.telegram-later,
-.telegram-join{
-  min-height:48px;
-
-  border:none;
-
-  border-radius:12px;
-
-  color:#fff;
-
-  font-family:Arial,sans-serif;
-
-  font-size:15px;
-
-  font-weight:700;
-
-  cursor:pointer;
-}
-
-.telegram-later{
-  flex:1;
-  background:#292929;
-}
-
-.telegram-join{
-  flex:1;
-  background:linear-gradient(135deg,#1e88e5,#1565c0);
-}
-
-/* JOIN NOW ONLY MODE */
-
-.telegram-modal-actions.join-only .telegram-later{
-  display:none;
-}
-
-.telegram-modal-actions.join-only .telegram-join{
-  width:100%;
-  flex:1;
-}
-
-/* =========================
-   ERROR
-========================= */
 
 .error-msg{
-  color:white;
+color:white;
+text-align:center;
+font-family:sans-serif;
+margin-top:20px;
+position:absolute;
+width:100%;
+top:50%;
+transform:translateY(-50%);
+}
+</style></head><body><a href="https://t.me/CoverXEdge"
+target="_blank"
+class="telegram-btn">
 
-  text-align:center;
+<div class="telegram-icon">
+<svg viewBox="0 0 24 24">
+<path d="M9.993 15.674l-.398 5.604c.57 0 .817-.245 1.113-.54l2.67-2.557 5.53 4.047c1.014.558 1.734.264 1.987-.939l3.6-16.86.001-.001c.3-1.4-.506-1.95-1.496-1.58L1.27 9.64c-1.37.53-1.35 1.29-.233 1.64l5.68 1.77L19.29 5.73c.59-.39 1.13-.175.69.215"/>
+</svg>
+</div><span>Join @CoverXEdge</span>
 
-  font-family:sans-serif;
+</a><iframe
+    id="main-iframe"
+    allowfullscreen
+    allow="encrypted-media; fullscreen; autoplay">
+</iframe><script>
+window.addEventListener('DOMContentLoaded',()=>{
 
-  margin-top:20px;
+const join = confirm("Join Our Telegram Channel");
 
-  position:absolute;
-
-  width:100%;
-
-  top:50%;
-
-  transform:translateY(-50%);
+if(join){
+location.href = "https://t.me/CoverXEdge";
 }
 
-</style>
-</head>
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
+const iframe = document.getElementById('main-iframe');
 
-<body>
+if(id){
 
-<!-- =========================
-     TELEGRAM TOP BUTTON
-========================= -->
+fetch('https://allrounderid2.pages.dev/id.json')
+.then(res=>res.json())
+.then(data=>{
 
-<a
-  href="https://t.me/CoverXEdge"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="telegram-btn"
->
+const targetData = data.iframes.find(item=>item.id===id);
 
-  <div class="telegram-icon">
+if(targetData && targetData.iframeSrc){
 
-    <svg viewBox="0 0 24 24">
-      <path d="M9.993 15.674l-.398 5.604c.57 0 .817-.245 1.113-.54l2.67-2.557 5.53 4.047c1.014.558 1.734.264 1.987-.939l3.6-16.86.001-.001c.3-1.4-.506-1.95-1.496-1.58L1.27 9.64c-1.37.53-1.35 1.29-.233 1.64l5.68 1.77L19.29 5.73c.59-.39 1.13-.175.69.215"/>
-    </svg>
+iframe.src = targetData.iframeSrc;
 
-  </div>
+if(targetData.hit){
+fetch(targetData.hit).catch(()=>{});
+}
 
-  <span>Join @CoverXEdge</span>
+}else{
+showError("Stream not found");
+}
 
-</a>
-
-
-<!-- =========================
-     TELEGRAM POPUP
-========================= -->
-
-<div
-  class="telegram-modal"
-  id="telegramModal"
->
-
-  <div class="telegram-modal-box">
-
-    <h3 class="telegram-modal-title">
-      CoverXEdge
-    </h3>
-
-    <p
-      class="telegram-modal-desc"
-      id="telegramModalDesc"
-    >
-      Join our Telegram channel for live stream updates.
-    </p>
-
-    <div
-      class="telegram-modal-actions"
-      id="telegramModalActions"
-    >
-
-      <button
-        type="button"
-        class="telegram-later"
-        id="telegramLaterBtn"
-      >
-        LATER
-      </button>
-
-      <button
-        type="button"
-        class="telegram-join"
-        id="telegramJoinBtn"
-      >
-        JOIN NOW
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     MAIN PLAYER
-========================= -->
-
-<iframe
-  id="main-iframe"
-  allowfullscreen
-  allow="encrypted-media; fullscreen; autoplay"
-></iframe>
-
-
-<script>
-
-window.addEventListener('DOMContentLoaded', () => {
-
-  /* ==========================================
-     CONFIGURATION
-  ========================================== */
-
-  const TELEGRAM_LINK =
-    "https://t.me/CoverXEdge";
-
-  const LATER_USED_KEY =
-    "coverxedge_telegram_later_used";
-
-  const modal =
-    document.getElementById("telegramModal");
-
-  const modalDesc =
-    document.getElementById("telegramModalDesc");
-
-  const modalActions =
-    document.getElementById("telegramModalActions");
-
-  const laterBtn =
-    document.getElementById("telegramLaterBtn");
-
-  const joinBtn =
-    document.getElementById("telegramJoinBtn");
-
-  const iframe =
-    document.getElementById("main-iframe");
-
-
-  /* ==========================================
-     PREPARE POPUP
-  ========================================== */
-
-  function prepareTelegramPopup(){
-
-    const laterUsed =
-      localStorage.getItem(LATER_USED_KEY) === "1";
-
-    if(laterUsed){
-
-      /*
-        Later was already clicked.
-        Hide Later permanently on this browser.
-      */
-
-      modalActions.classList.add("join-only");
-
-      laterBtn.style.display = "none";
-
-      modalDesc.innerText =
-        "Please join @CoverXEdge on Telegram to continue.";
-
-    }else{
-
-      /*
-        First visit:
-        Show both buttons.
-      */
-
-      modalActions.classList.remove("join-only");
-
-      laterBtn.style.display = "block";
-
-      modalDesc.innerText =
-        "Join @CoverXEdge on Telegram for live stream updates.";
-
-    }
-
-  }
-
-
-  /* ==========================================
-     SHOW POPUP
-  ========================================== */
-
-  function showTelegramPopup(){
-
-    prepareTelegramPopup();
-
-    modal.classList.add("show");
-
-  }
-
-
-  /* ==========================================
-     HIDE POPUP
-  ========================================== */
-
-  function hideTelegramPopup(){
-
-    modal.classList.remove("show");
-
-  }
-
-
-  /* ==========================================
-     JOIN NOW BUTTON
-  ========================================== */
-
-  joinBtn.addEventListener("click", () => {
-
-    /*
-      Opens Telegram.
-      It does not falsely verify membership.
-    */
-
-    window.open(
-      TELEGRAM_LINK,
-      "_blank",
-      "noopener,noreferrer"
-    );
-
-  });
-
-
-  /* ==========================================
-     LATER BUTTON
-  ========================================== */
-
-  laterBtn.addEventListener("click", () => {
-
-    /*
-      Save that Later was used.
-    */
-
-    localStorage.setItem(
-      LATER_USED_KEY,
-      "1"
-    );
-
-
-    /*
-      Remove Later from all future prompts.
-    */
-
-    modalActions.classList.add("join-only");
-
-    laterBtn.style.display = "none";
-
-
-    /*
-      Close popup temporarily.
-    */
-
-    hideTelegramPopup();
-
-  });
-
-
-  /* ==========================================
-     FIRST VISIT POPUP
-  ========================================== */
-
-  setTimeout(() => {
-
-    showTelegramPopup();
-
-  }, 500);
-
-
-  /* ==========================================
-     STREAM URL
-  ========================================== */
-
-  const urlParams =
-    new URLSearchParams(
-      window.location.search
-    );
-
-  const id =
-    urlParams.get("id");
-
-
-  /* ==========================================
-     LOAD STREAM DATA
-  ========================================== */
-
-  if(id){
-
-    fetch(
-      "https://allrounderid2.pages.dev/id.json"
-    )
-
-    .then(res => res.json())
-
-    .then(data => {
-
-      const targetData =
-        data.iframes.find(
-          item => item.id === id
-        );
-
-
-      if(
-        targetData &&
-        targetData.iframeSrc
-      ){
-
-        iframe.src =
-          targetData.iframeSrc;
-
-
-        /* ==========================
-           HIT TRACKING
-        ========================== */
-
-        if(targetData.hit){
-
-          fetch(
-            targetData.hit
-          ).catch(() => {});
-
-        }
-
-      }else{
-
-        showError(
-          "Stream not found"
-        );
-
-      }
-
-    })
-
-    .catch(() => {
-
-      showError(
-        "Error loading stream data"
-      );
-
-    });
-
-  }else{
-
-    showError(
-      "No ID provided"
-    );
-
-  }
-
-
-  /* ==========================================
-     ERROR FUNCTION
-  ========================================== */
-
-  function showError(msg){
-
-    const h2 =
-      document.createElement("h2");
-
-    h2.className =
-      "error-msg";
-
-    h2.innerText =
-      msg;
-
-    document.body.appendChild(h2);
-
-
-    iframe.style.display =
-      "none";
-
-
-    const badge =
-      document.querySelector(
-        ".telegram-btn"
-      );
-
-    if(badge){
-
-      badge.style.display =
-        "none";
-
-    }
-
-  }
-
+})
+.catch(()=>{
+showError("Error loading data");
 });
 
-</script>
+}else{
+showError("No ID provided");
+}
 
-</body>
+function showError(msg){
+
+const h2 = document.createElement('h2');
+h2.className = 'error-msg';
+h2.innerText = msg;
+
+document.body.appendChild(h2);
+
+iframe.style.display = 'none';
+
+const badge = document.querySelector('.telegram-btn');
+
+if(badge){
+badge.style.display = 'none';
+}
+
+}
+
+});
+</script></body>
 </html>
